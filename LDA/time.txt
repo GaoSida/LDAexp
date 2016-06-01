@@ -1,0 +1,124 @@
+【Original LDA】
+iteration 10:
+time interval = 64; 
+iteration 20:
+time interval = 63; 
+iteration 30:
+time interval = 62; 
+iteration 40:
+time interval = 63; 
+iteration 50:
+time interval = 60; 
+iteration 60:
+time interval = 64; 
+iteration 70:
+time interval = 62; 
+iteration 80:
+time interval = 63; 
+iteration 90:
+time interval = 63; 
+iteration 100:
+time interval = 64; 
+
+
+【Fast LDA】
+iteration 10:
+time interval = 54; 
+iteration 20:
+time interval = 47; 
+iteration 30:
+time interval = 44; 
+iteration 40:
+time interval = 40; 
+iteration 50:
+time interval = 40; 
+iteration 60:
+time interval = 41; 
+iteration 70:
+time interval = 39; 
+iteration 80:
+time interval = 37; 
+iteration 90:
+time interval = 34; 
+iteration 100:
+time interval = 34; 
+iteration 110:
+time interval = 33; 
+iteration 120:
+time interval = 32; 
+iteration 130:
+time interval = 33; 
+iteration 140:
+time interval = 32; 
+iteration 150:
+time interval = 32; 
+iteration 160:
+time interval = 32; 
+iteration 170:
+time interval = 32; 
+iteration 180:
+time interval = 31; 
+iteration 190:
+time interval = 32; 
+iteration 200:
+time interval = 31; 
+iteration 210:
+time interval = 31; 
+iteration 220:
+time interval = 31; 
+iteration 230:
+time interval = 31; 
+iteration 240:
+time interval = 32; 
+iteration 250:
+time interval = 30; 
+iteration 260:
+time interval = 31; 
+iteration 270:
+time interval = 31; 
+iteration 280:
+time interval = 31; 
+iteration 290:
+time interval = 31; 
+iteration 300:
+time interval = 30; 
+iteration 310:
+time interval = 31; 
+iteration 320:
+time interval = 31; 
+iteration 330:
+time interval = 30; 
+iteration 340:
+time interval = 30; 
+iteration 350:
+time interval = 30; 
+iteration 360:
+time interval = 31; 
+iteration 370:
+time interval = 30; 
+iteration 380:
+time interval = 30; 
+iteration 390:
+time interval = 30; 
+iteration 400:
+time interval = 30; 
+iteration 410:
+time interval = 30; 
+iteration 420:
+time interval = 30; 
+iteration 430:
+time interval = 30; 
+iteration 440:
+time interval = 30; 
+iteration 450:
+time interval = 30; 
+iteration 460:
+time interval = 30; 
+iteration 470:
+time interval = 30; 
+iteration 480:
+time interval = 30; 
+iteration 490:
+time interval = 30; 
+iteration 500:
+time interval = 30; 

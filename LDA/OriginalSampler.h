@@ -3,19 +3,29 @@
 
 #include "GibbsSampler.h"
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 // 原始的抽样方法O(K)
 
 class OriginalSampler : public GibbsSampler
 {
+    double* weight;
 public:
-    OriginalSampler(Corpus* corpus) : GibbsSampler(corpus){}
+    OriginalSampler(Corpus* corpus) : GibbsSampler(corpus)
+    {
+         weight = new double[corpus->K];
+    }
+
+    ~OriginalSampler()
+    {
+        delete weight;
+    }
     
     int sample(int doc, int token, int iteration)
     {
+        //long long start = clock();
         // 计算各个话题被抽出的权重
-        double* weight = new double[corpus->K];
         double weight_sum = 0;
 
         int t = corpus->doc_token_list[doc][token].word_no;         // 这个token对应的单词序号
@@ -36,7 +46,7 @@ public:
             p_sum += weight[k] / weight_sum;
             if (u < p_sum)
             {
-                delete[] weight;
+                //cout << clock() - start << endl;
                 return k;
             }
         }
