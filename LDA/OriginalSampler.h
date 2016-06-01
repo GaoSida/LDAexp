@@ -24,7 +24,6 @@ public:
     
     int sample(int doc, int token, int iteration)
     {
-        //long long start = clock();
         // 计算各个话题被抽出的权重
         double weight_sum = 0;
 
@@ -46,7 +45,6 @@ public:
             p_sum += weight[k] / weight_sum;
             if (u < p_sum)
             {
-                //cout << clock() - start << endl;
                 return k;
             }
         }

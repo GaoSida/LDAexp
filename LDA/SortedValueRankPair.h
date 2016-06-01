@@ -6,67 +6,27 @@
 struct value_rank
 {
     int rank;
-    double value;
+    int value;
 
     bool operator<(const value_rank &vr) const
     {
         return this->value < vr.value;
     }
+};
 
-    // 冒泡排序，同时维护每个元素的位置。
-    // 由于每次数组的变动极小，所以这里冒泡的均摊复杂度（交换次数）小于log(n)
-    // 但这浪费的时间很长
-    static void bubbleSort(value_rank* sorted_list, int* rank_list, int N)
-    {
-        for (int i = 0; i < N; i++)
-        {
-            bool exchange_flag = false;
-            for (int j = i; j < N - 1; j++)
-            {
-                if (sorted_list[j + 1] < sorted_list[j])
-                {
-                    value_rank temp = sorted_list[j + 1];
-                    sorted_list[j + 1] = sorted_list[j];
-                    sorted_list[j] = temp;
-
-                    rank_list[sorted_list[j + 1].rank] = j + 1;
-                    rank_list[sorted_list[j].rank] = j;
-
-                    exchange_flag = true;
-                }
-            }
-            if (!exchange_flag)
-            {
-                return;
-            }
-        }
-    }
-
-    static void swapAdjust(value_rank* sorted_list, int* rank_list, int N, int change)
-    {
-        int j = change;
-        while (j < N - 1 && sorted_list[j + 1] < sorted_list[j])
-        {
-            value_rank temp = sorted_list[j + 1];
-            sorted_list[j + 1] = sorted_list[j];
-            sorted_list[j] = temp;
-
-            rank_list[sorted_list[j + 1].rank] = j + 1;
-            rank_list[sorted_list[j].rank] = j;
-            j++;
-        }
-
-        while (j > 0 && sorted_list[j] < sorted_list[j - 1])
-        {
-            value_rank temp = sorted_list[j - 1];
-            sorted_list[j - 1] = sorted_list[j];
-            sorted_list[j] = temp;
-
-            rank_list[sorted_list[j - 1].rank] = j - 1;
-            rank_list[sorted_list[j].rank] = j;
-            j--;
-        }
-    }
+class SortedValueRankList
+{
+    int length;                     // 长度
+    value_rank* sorted_list;        // 排序后的 值-原rank 对
+    int* sorted_rank;               // 由原来的rank，查现在元素的实际位置
+public:
+    SortedValueRankList(int* original, int length);    // 传入一个原始数组复制过来
+    ~SortedValueRankList();
+    value_rank& get(int current_pos);                     // 寻排序后的位置取数
+    value_rank& getOriginal(int original_rank);           // 按原来的rank取数
+    void swapAdjust(int current_pos);                          // 因为改动了一个数而进行调整。传入实际的位置。
+    void increaseOriginal(int original_rank);             // 对某个位置加1或减1，属于常用操作
+    void decreaseOriginal(int original_rank);
 };
 
 #endif

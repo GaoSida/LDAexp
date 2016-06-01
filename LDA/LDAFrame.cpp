@@ -27,7 +27,6 @@ void LDAFrame::initialize()
         corpus->topic_token_sum[k] = 0;
 
     // 随机分配初始话题
-    srand((unsigned)time(0));
     for (int m = 0; m < corpus->M; m++)
         for (int n = 0; n < corpus->N[m]; n++)
         {

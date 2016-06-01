@@ -12,18 +12,18 @@ class FastSampler : public GibbsSampler
 {
     double** vector_a;          // M * K 的矩阵，存放 N_kd + alpha，即每篇文档中每个话题的计数。
     double** vector_b;          // V * K 的矩阵，存放 N_wk + beta，即每个单词在每个话题中的计数。
+    double* vector_c;           // 长度为k的矩阵，存放 1 / (N_k + 1)
 
     double* norm_a;             // 长度为M的向量，每行向量a的二范数。没有开方。
     double* norm_b;             // 长度为V的向量，每行向量b的二范数。没有开方。
 
-    value_rank* sorted_N_k;     // 长度为K的有序向量。为了方便地找到N_k的最小值。
-    int* sorted_N_k_rank;       // 长度为K的向量。由rank，映射到在有序向量N_k中的位置。
-    value_rank** sorted_N_kd;   // M * K 的矩阵。每行有序，按照每个文本中每个话题的个数从大到小排序。
-    int** sorted_N_kd_rank;     // M * K 的矩阵。由rank，映射到在有序向量中的位置。
+    SortedValueRankList* sorted_N_k;     // 长度为K的有序向量。为了方便地找到N_k的最小值。
+    SortedValueRankList** sorted_N_kd;   // M * K 的矩阵。每行有序，按照每个文本中每个话题的个数从大到小排序。
 
     bool initialized;
     void fastInitialize(int doc, int token);
-    void update(int doc, int word, int old_topic, int new_topic);
+    void excludeToken(int doc, int word, int old_topic);
+    void includeToken(int doc, int word, int new_topic);
 
     double* sum_p;
     double* Z;
