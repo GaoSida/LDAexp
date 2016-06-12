@@ -3,11 +3,11 @@
 using namespace std;
 
 AliasDrawer::AliasDrawer(int n)
-    {
-        N = n;
-        proba = new double[N];
-        alias = new int[N];
-    }
+{
+    N = n;
+    proba = new double[N];
+    alias = new int[N];
+}
 AliasDrawer::~AliasDrawer()
 {
     delete[] proba;

@@ -1,0 +1,146 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AliasDrawer	AliasDrawer.cpp	/^AliasDrawer::AliasDrawer(int n)$/;"	f	class:AliasDrawer
+AliasDrawer	AliasDrawer.h	/^class AliasDrawer$/;"	c
+AliasSampler	AliasSampler.h	/^class AliasSampler : public GibbsSampler$/;"	c
+ConvergenceJudge	ConvergenceJudge.h	/^    ConvergenceJudge(Corpus* corpus, Evaluator* evaluator)$/;"	f	class:ConvergenceJudge
+ConvergenceJudge	ConvergenceJudge.h	/^class ConvergenceJudge$/;"	c
+Corpus	Corpus.cpp	/^Corpus::Corpus(int K)$/;"	f	class:Corpus
+Corpus	Corpus.h	/^struct Corpus$/;"	s
+DATA_DIR	main.cpp	/^#define DATA_DIR /;"	d	file:
+E	SparseSampler.h	/^    double E;               \/\/ word topic bucket。每个单词都要现算。$/;"	m	class:SparseSampler
+ESP	AliasDrawer.h	/^#define ESP /;"	d
+Evaluator	Evaluator.cpp	/^Evaluator::Evaluator(Corpus* corpus)$/;"	f	class:Evaluator
+Evaluator	Evaluator.h	/^class Evaluator$/;"	c
+F	SparseSampler.h	/^    double F;               \/\/ document topic bucket$/;"	m	class:SparseSampler
+FastSampler	FastSampler.cpp	/^FastSampler::FastSampler(Corpus* corpus) : GibbsSampler(corpus) $/;"	f	class:FastSampler
+FastSampler	FastSampler.h	/^class FastSampler : public GibbsSampler$/;"	c
+G	SparseSampler.h	/^    double G;               \/\/ smoothing only bucket$/;"	m	class:SparseSampler
+GibbsSampler	GibbsSampler.h	/^    GibbsSampler(Corpus* corpus)$/;"	f	class:GibbsSampler
+GibbsSampler	GibbsSampler.h	/^class GibbsSampler$/;"	c
+INFO_INTERVAL	main.cpp	/^#define INFO_INTERVAL /;"	d	file:
+JudgeByIteration	JudgeByIteration.h	/^    JudgeByIteration(Corpus* corpus, Evaluator* evaluator, int target)$/;"	f	class:JudgeByIteration
+JudgeByIteration	JudgeByIteration.h	/^class JudgeByIteration : public ConvergenceJudge$/;"	c
+K	Corpus.h	/^    int K;                                       \/\/ 话题总数$/;"	m	struct:Corpus
+LDAFrame	LDAFrame.cpp	/^LDAFrame::LDAFrame(Corpus* corpus, GibbsSampler* sampler, $/;"	f	class:LDAFrame
+LDAFrame	LDAFrame.h	/^class LDAFrame$/;"	c
+M	Corpus.h	/^    int M;                                       \/\/ 文档数$/;"	m	struct:Corpus
+MAX_ITERATION	main.cpp	/^#define MAX_ITERATION /;"	d	file:
+MIN_ACCEPT_LENGTH	main.cpp	/^#define MIN_ACCEPT_LENGTH /;"	d	file:
+N	AliasDrawer.h	/^    int N;                              \/\/ 总个数$/;"	m	class:AliasDrawer
+N	Corpus.h	/^    int* N;                                      \/\/ 长度为M，每篇文档的token数$/;"	m	struct:Corpus
+NO_INFO	Evaluator.h	/^#define NO_INFO /;"	d
+NUMBER_OF_TOPIC	main.cpp	/^#define NUMBER_OF_TOPIC /;"	d	file:
+N_sum	Corpus.h	/^    int N_sum;                                   \/\/ 所有文档的总token数目$/;"	m	struct:Corpus
+OriginalSampler	OriginalSampler.h	/^    OriginalSampler(Corpus* corpus) : GibbsSampler(corpus)$/;"	f	class:OriginalSampler
+OriginalSampler	OriginalSampler.h	/^class OriginalSampler : public GibbsSampler$/;"	c
+PERPLEXITY	Evaluator.h	/^#define PERPLEXITY /;"	d
+SortedValueRankList	SortedValueRankPair.cpp	/^SortedValueRankList::SortedValueRankList(int* original, int length)$/;"	f	class:SortedValueRankList
+SortedValueRankList	SortedValueRankPair.h	/^class SortedValueRankList$/;"	c
+SparseSampler	SparseSampler.cpp	/^SparseSampler::SparseSampler(Corpus* corpus) : GibbsSampler(corpus)$/;"	f	class:SparseSampler
+SparseSampler	SparseSampler.h	/^class SparseSampler : public GibbsSampler$/;"	c
+TIME_INTERVAL	Evaluator.h	/^#define TIME_INTERVAL /;"	d
+TOPIC_PREDICTION	Evaluator.h	/^#define TOPIC_PREDICTION /;"	d
+TOPIC_SUMMARY	Evaluator.h	/^#define TOPIC_SUMMARY /;"	d
+Token	Corpus.h	/^struct Token$/;"	s
+V	Corpus.h	/^    int V;                                       \/\/ 出现的单词(word)数$/;"	m	struct:Corpus
+Z	FastSampler.h	/^    double* Z;$/;"	m	class:FastSampler
+__LDAEXP_ALIAS_DRAWER__	AliasDrawer.h	/^#define __LDAEXP_ALIAS_DRAWER__$/;"	d
+__LDAEXP_ALIAS_SAMPLER__	AliasSampler.h	/^#define __LDAEXP_ALIAS_SAMPLER__$/;"	d
+__LDAEXP_CONVERGENCE_JUDGE__	ConvergenceJudge.h	/^#define __LDAEXP_CONVERGENCE_JUDGE__$/;"	d
+__LDAEXP_CORPUS__	Corpus.h	/^#define __LDAEXP_CORPUS__$/;"	d
+__LDAEXP_EVALUATOR__	Evaluator.h	/^#define __LDAEXP_EVALUATOR__$/;"	d
+__LDAEXP_FAST_SAMPLER__	FastSampler.h	/^#define __LDAEXP_FAST_SAMPLER__$/;"	d
+__LDAEXP_GIBBS_SAMPLER__	GibbsSampler.h	/^#define __LDAEXP_GIBBS_SAMPLER__$/;"	d
+__LDAEXP_JUDGE_BY_ITERATION__	JudgeByIteration.h	/^#define __LDAEXP_JUDGE_BY_ITERATION__$/;"	d
+__LDAEXP_LDAFRAME__	LDAFrame.h	/^#define __LDAEXP_LDAFRAME__$/;"	d
+__LDAEXP_ORIGINAL_SAMPLER__	OriginalSampler.h	/^#define __LDAEXP_ORIGINAL_SAMPLER__$/;"	d
+__LDAEXP_SORTED_VALUE_RANK__	SortedValueRankPair.h	/^#define __LDAEXP_SORTED_VALUE_RANK__$/;"	d
+__LDAEXP_SPARSE_SAMPLER__	SparseSampler.h	/^#define __LDAEXP_SPARSE_SAMPLER__$/;"	d
+alias	AliasDrawer.h	/^    int* alias;                         \/\/ 替身表$/;"	m	class:AliasDrawer
+alpha	Corpus.h	/^    double* alpha;                               \/\/ 超参数alpha，doc-topic分布的Dirichlet分布的参数。长度为K。$/;"	m	struct:Corpus
+beta	Corpus.h	/^    double* beta;                                \/\/ 超参数beta，topic-word分布的Dirichlet分布的参数。长度为V。$/;"	m	struct:Corpus
+beta_sum	Corpus.h	/^    double beta_sum;                             \/\/ beta各分量的和$/;"	m	struct:Corpus
+c	SparseSampler.h	/^    double* c;              \/\/ 长度为k，word topic bucket的系数。以文档为单位进行初始化和重置。$/;"	m	class:SparseSampler
+calcDistributions	Corpus.cpp	/^void Corpus::calcDistributions()$/;"	f	class:Corpus
+corpus	ConvergenceJudge.h	/^    Corpus* corpus;$/;"	m	class:ConvergenceJudge
+corpus	Evaluator.h	/^    Corpus* corpus;$/;"	m	class:Evaluator
+corpus	GibbsSampler.h	/^    Corpus* corpus;$/;"	m	class:GibbsSampler
+corpus	LDAFrame.h	/^    Corpus* corpus;$/;"	m	class:LDAFrame
+createTable	AliasDrawer.cpp	/^void AliasDrawer::createTable(double* p)$/;"	f	class:AliasDrawer
+decreaseOriginal	SortedValueRankPair.cpp	/^void SortedValueRankList::decreaseOriginal(int original_rank)$/;"	f	class:SortedValueRankList
+defaultRead	Corpus.cpp	/^void Corpus::defaultRead(string dir, int accept)$/;"	f	class:Corpus
+dictionary	Corpus.h	/^    std::map<std::string, int> dictionary;       \/\/ word映射到编号，共V个元素，标号从0开始$/;"	m	struct:Corpus
+doc_by_topic_cnt	Corpus.h	/^    int** doc_by_topic_cnt;                      \/\/ M * K 的矩阵，记录当前每个话题的token数目$/;"	m	struct:Corpus
+doc_by_topic_distribution	Corpus.h	/^    double** doc_by_topic_distribution;          \/\/ M * K 的矩阵，每个文档的的话题分布$/;"	m	struct:Corpus
+doc_token_list	Corpus.h	/^    Token** doc_token_list;                      \/\/ 为了方便实现，下两个数据结构的合并。$/;"	m	struct:Corpus
+draw	AliasDrawer.cpp	/^int AliasDrawer::draw()$/;"	f	class:AliasDrawer
+e	SparseSampler.h	/^    double* e;              \/\/ 长度为K，E中的每一项$/;"	m	class:SparseSampler
+endDocument	SparseSampler.cpp	/^inline void SparseSampler::endDocument(int doc, int new_topic)$/;"	f	class:SparseSampler
+evaluator	ConvergenceJudge.h	/^    Evaluator* evaluator;$/;"	m	class:ConvergenceJudge
+evaluator	LDAFrame.h	/^    Evaluator* evaluator;$/;"	m	class:LDAFrame
+excludeToken	FastSampler.cpp	/^void FastSampler::excludeToken(int doc, int word, int old_topic)$/;"	f	class:FastSampler
+excludeToken	SparseSampler.cpp	/^inline void SparseSampler::excludeToken(bool start_of_doc, int doc, int word, int old_topic)$/;"	f	class:SparseSampler
+f	SparseSampler.h	/^    double* f;              \/\/ 长度为k，F中的每一项。以文档为单位进行初始化。$/;"	m	class:SparseSampler
+fastInitialize	FastSampler.cpp	/^void FastSampler::fastInitialize(int doc, int token)$/;"	f	class:FastSampler
+g	SparseSampler.h	/^    double* g;              \/\/ 长度为k，G中的每一项$/;"	m	class:SparseSampler
+get	SortedValueRankPair.cpp	/^value_rank& SortedValueRankList::get(int current_pos)$/;"	f	class:SortedValueRankList
+getOriginal	SortedValueRankPair.cpp	/^value_rank& SortedValueRankList::getOriginal(int original_rank)$/;"	f	class:SortedValueRankList
+ground_truth	Corpus.h	/^    int* ground_truth;                           \/\/ 原始语料库中的分类，从0开始的整数。长度为M。$/;"	m	struct:Corpus
+includeToken	FastSampler.cpp	/^void FastSampler::includeToken(int doc, int word, int new_topic)$/;"	f	class:FastSampler
+includeToken	SparseSampler.cpp	/^inline void SparseSampler::includeToken(int doc, int word, int new_topic)$/;"	f	class:SparseSampler
+increaseOriginal	SortedValueRankPair.cpp	/^void SortedValueRankList::increaseOriginal(int original_rank)$/;"	f	class:SortedValueRankList
+initialize	LDAFrame.cpp	/^void LDAFrame::initialize()$/;"	f	class:LDAFrame
+initialized	FastSampler.h	/^    bool initialized;$/;"	m	class:FastSampler
+initialized	SparseSampler.h	/^    bool initialized;$/;"	m	class:SparseSampler
+isConvergence	JudgeByIteration.h	/^    bool isConvergence(int iteration)$/;"	f	class:JudgeByIteration
+judge	LDAFrame.h	/^    ConvergenceJudge* judge;$/;"	m	class:LDAFrame
+last_time	Evaluator.h	/^    double last_time;$/;"	m	class:Evaluator
+length	SortedValueRankPair.h	/^    int length;                     \/\/ 长度$/;"	m	class:SortedValueRankList
+main	main.cpp	/^int main()$/;"	f
+norm_a	FastSampler.h	/^    double* norm_a;             \/\/ 长度为M的向量，每行向量a的二范数。没有开方。$/;"	m	class:FastSampler
+norm_b	FastSampler.h	/^    double* norm_b;             \/\/ 长度为V的向量，每行向量b的二范数。没有开方。$/;"	m	class:FastSampler
+operator <	SortedValueRankPair.h	/^    bool operator<(const value_rank &vr) const$/;"	f	struct:value_rank
+perplexity	Evaluator.cpp	/^double Evaluator::perplexity()$/;"	f	class:Evaluator
+printInfo	Evaluator.cpp	/^void Evaluator::printInfo(int info, int iteration)$/;"	f	class:Evaluator
+proba	AliasDrawer.h	/^    double* proba;                      \/\/ N个概率$/;"	m	class:AliasDrawer
+rank	SortedValueRankPair.h	/^    int rank;$/;"	m	struct:value_rank
+sample	FastSampler.cpp	/^int FastSampler::sample(int doc, int token, int iteration)$/;"	f	class:FastSampler
+sample	OriginalSampler.h	/^    int sample(int doc, int token, int iteration)$/;"	f	class:OriginalSampler
+sample	SparseSampler.cpp	/^int SparseSampler::sample(int doc, int token, int iteration)$/;"	f	class:SparseSampler
+sampler	LDAFrame.h	/^    GibbsSampler* sampler;$/;"	m	class:LDAFrame
+solve	LDAFrame.cpp	/^void LDAFrame::solve(int info, int interval)$/;"	f	class:LDAFrame
+sorted_N_k	FastSampler.h	/^    SortedValueRankList* sorted_N_k;     \/\/ 长度为K的有序向量。为了方便地找到N_k的最小值。$/;"	m	class:FastSampler
+sorted_N_kd	FastSampler.h	/^    SortedValueRankList** sorted_N_kd;   \/\/ M * K 的矩阵。每行有序，按照每个文本中每个话题的个数从大到小排序。$/;"	m	class:FastSampler
+sorted_document_topic_cnt	SparseSampler.h	/^    SortedValueRankList** sorted_document_topic_cnt;$/;"	m	class:SparseSampler
+sorted_list	SortedValueRankPair.h	/^    value_rank* sorted_list;        \/\/ 排序后的 值-原rank 对$/;"	m	class:SortedValueRankList
+sorted_rank	SortedValueRankPair.h	/^    int* sorted_rank;               \/\/ 由原来的rank，查现在元素的实际位置$/;"	m	class:SortedValueRankList
+sorted_word_topic_cnt	SparseSampler.h	/^    SortedValueRankList** sorted_word_topic_cnt;$/;"	m	class:SparseSampler
+sparseInitialize	SparseSampler.cpp	/^void SparseSampler::sparseInitialize(int doc, int old_topic)$/;"	f	class:SparseSampler
+startDocument	SparseSampler.cpp	/^inline void SparseSampler::startDocument(int doc, int word, int old_topic)$/;"	f	class:SparseSampler
+sum_p	FastSampler.h	/^    double* sum_p;$/;"	m	class:FastSampler
+swapAdjust	SortedValueRankPair.cpp	/^void SortedValueRankList::swapAdjust(int change)$/;"	f	class:SortedValueRankList
+target_iteration	JudgeByIteration.h	/^    int target_iteration;$/;"	m	class:JudgeByIteration
+topic	Corpus.h	/^    int topic;$/;"	m	struct:Token
+topic	FastSampler.h	/^    int* topic;                 \/\/ 精确计算的话题的顺序$/;"	m	class:FastSampler
+topic_by_word_cnt	Corpus.h	/^    int** topic_by_word_cnt;                     \/\/ K * V 的矩阵，记录每个话题下每个单词的token数目$/;"	m	struct:Corpus
+topic_by_word_distribution	Corpus.h	/^    double** topic_by_word_distribution;         \/\/ K * V 的矩阵，每个话题下各个单词的分布$/;"	m	struct:Corpus
+topic_token_sum	Corpus.h	/^    int* topic_token_sum;                        \/\/ 长度为K，每个话题下的token总数$/;"	m	struct:Corpus
+value	SortedValueRankPair.h	/^    int value;$/;"	m	struct:value_rank
+value_rank	SortedValueRankPair.h	/^struct value_rank$/;"	s
+vector_a	FastSampler.h	/^    double** vector_a;          \/\/ M * K 的矩阵，存放 N_kd + alpha，即每篇文档中每个话题的计数。$/;"	m	class:FastSampler
+vector_b	FastSampler.h	/^    double** vector_b;          \/\/ V * K 的矩阵，存放 N_wk + beta，即每个单词在每个话题中的计数。$/;"	m	class:FastSampler
+vector_c	FastSampler.h	/^    double* vector_c;           \/\/ 长度为k的矩阵，存放 1 \/ (N_k + 1)$/;"	m	class:FastSampler
+weight	OriginalSampler.h	/^    double* weight;$/;"	m	class:OriginalSampler
+word_list	Corpus.h	/^    std::vector<std::string> word_list;          \/\/ 单词表，长度为 V$/;"	m	struct:Corpus
+word_no	Corpus.h	/^    int word_no;$/;"	m	struct:Token
+~AliasDrawer	AliasDrawer.cpp	/^AliasDrawer::~AliasDrawer()$/;"	f	class:AliasDrawer
+~Corpus	Corpus.cpp	/^Corpus::~Corpus()$/;"	f	class:Corpus
+~FastSampler	FastSampler.cpp	/^FastSampler::~FastSampler()$/;"	f	class:FastSampler
+~OriginalSampler	OriginalSampler.h	/^    ~OriginalSampler()$/;"	f	class:OriginalSampler
+~SortedValueRankList	SortedValueRankPair.cpp	/^SortedValueRankList::~SortedValueRankList()$/;"	f	class:SortedValueRankList
+~SparseSampler	SparseSampler.cpp	/^SparseSampler::~SparseSampler()$/;"	f	class:SparseSampler

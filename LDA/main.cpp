@@ -2,6 +2,7 @@
 #include "OriginalSampler.h"
 #include "FastSampler.h"
 #include "SparseSampler.h"
+#include "AliasSampler.h"
 #include "Evaluator.h"
 #include "JudgeByIteration.h"
 #include <iostream>
@@ -21,6 +22,7 @@ using namespace std;
         > 原始：60~62s左右（一直如此）
         > FastLDA：13~15s左右（进过几十轮迭代后下降下来）
         > SparseLDA：3~4s左右
+        > AliasLDA：3~4s左右
 */
 
 int main()
@@ -35,11 +37,11 @@ int main()
     corpus->defaultRead(DATA_DIR, MIN_ACCEPT_LENGTH);
     
     //GibbsSampler* sampler = new OriginalSampler(corpus);
-    GibbsSampler* sampler = new FastSampler(corpus);
+    //GibbsSampler* sampler = new FastSampler(corpus);
     //GibbsSampler* sampler = new SparseSampler(corpus);
+    GibbsSampler* sampler = new AliasSampler(corpus);
     Evaluator* evaluator = new Evaluator(corpus);
     ConvergenceJudge* judge = new JudgeByIteration(corpus, evaluator, MAX_ITERATION);
-
     LDAFrame* lda = new LDAFrame(corpus, sampler, evaluator, judge);
     lda->solve(TIME_INTERVAL, INFO_INTERVAL);
 
