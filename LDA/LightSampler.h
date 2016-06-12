@@ -4,6 +4,9 @@
 #include "GibbsSampler.h"
 #include "AliasDrawer.h"
 
+#define MH_STEP 4
+#define STALE 2
+
 class LightSampler : public GibbsSampler
 {
     AliasDrawer** word_drawers;         // V 个抽样器

@@ -109,88 +109,94 @@ int LightSampler::sample(int doc, int token, int iteration)
         initialized = true;
     }
 
-    // 更新各个实时计数的值
-    word_proposal_sum[word] -= word_proposal[word][old_topic];
-    word_proposal[word][old_topic] = (corpus->topic_by_word_cnt[old_topic][word] + corpus->beta[word])
-                / (corpus->topic_token_sum[old_topic] + corpus->beta_sum);
-    word_proposal_sum[word] += word_proposal[word][old_topic];
-
-    doc_proposal_sum[doc] -= doc_proposal[doc][old_topic];
-    doc_proposal[doc][old_topic] = (corpus->doc_by_topic_cnt[doc][old_topic] + corpus->alpha[old_topic]);
-    doc_proposal_sum[doc] += doc_proposal[doc][old_topic];
-
-    if (iteration % 2)
+    for (int step = 0; step < MH_STEP; step++)
     {
-        // 抽word分布
-        //cout << "in word" << endl;
-        if (word_drawer_timers[word] == 0)
+        // 更新各个实时计数的值
+        word_proposal_sum[word] -= word_proposal[word][old_topic];
+        word_proposal[word][old_topic] = (corpus->topic_by_word_cnt[old_topic][word] + corpus->beta[word])
+                    / (corpus->topic_token_sum[old_topic] + corpus->beta_sum);
+        word_proposal_sum[word] += word_proposal[word][old_topic];
+
+        doc_proposal_sum[doc] -= doc_proposal[doc][old_topic];
+        doc_proposal[doc][old_topic] = (corpus->doc_by_topic_cnt[doc][old_topic] + corpus->alpha[old_topic]);
+        doc_proposal_sum[doc] += doc_proposal[doc][old_topic];
+
+        if (step % 2 == 0)
         {
-            if (word_proposal_sum[word] < 0)
+            // 抽word分布
+            //cout << "in word" << endl;
+            if (word_drawer_timers[word] == 0)
             {
-                cout << word << " " << word_proposal_sum[0] << endl;
-                exit(0);
+                if (word_proposal_sum[word] < 0)
+                {
+                    cout << word << " " << word_proposal_sum[0] << endl;
+                    exit(0);
+                }
+                stale_word_proposal_sum[word] = word_proposal_sum[word];
+                for (int k = 0; k < corpus->K; k++)
+                {
+                    stale_word_proposal[word][k] = word_proposal[word][k];
+                    proba[k] = stale_word_proposal[word][k] / stale_word_proposal_sum[word];   
+                }
+                //cout << "start create" << endl;
+                word_drawers[word]->createTable(proba);
+                //cout << "end create" << endl;
+                word_drawer_timers[word] = corpus->K * STALE;
             }
-            stale_word_proposal_sum[word] = word_proposal_sum[word];
-            for (int k = 0; k < corpus->K; k++)
+
+            word_drawer_timers[word]--;
+            new_topic = word_drawers[word]->draw();
+            
+            double Pie_accept = doc_proposal[doc][new_topic] / doc_proposal[doc][old_topic] *
+                word_proposal[word][new_topic] / word_proposal[word][old_topic] *
+                stale_word_proposal[word][old_topic] / stale_word_proposal[word][new_topic];
+            double roll = 1.0 * rand() / RAND_MAX;
+            if (roll > Pie_accept)      // 拒绝
+                new_topic = old_topic;    
+            //cout << "out word" << endl;
+        }
+        else
+        {
+            // 抽doc分布
+            //cout << "in doc" << endl;
+            if (doc_drawer_timers[doc] == 0)
             {
-                stale_word_proposal[word][k] = word_proposal[word][k];
-                proba[k] = stale_word_proposal[word][k] / stale_word_proposal_sum[word];   
+                stale_doc_proposal_sum[doc] = doc_proposal_sum[doc];
+                for (int k = 0; k < corpus->K; k++)
+                {
+                    stale_doc_proposal[doc][k] = doc_proposal[doc][k];
+                    proba[k] = stale_doc_proposal[doc][k] / stale_doc_proposal_sum[doc];   
+                }
+                doc_drawers[doc]->createTable(proba);
+                doc_drawer_timers[doc] = corpus->K * STALE;
             }
-            //cout << "start create" << endl;
-            word_drawers[word]->createTable(proba);
-            //cout << "end create" << endl;
-            word_drawer_timers[word] = corpus->K;
+
+            doc_drawer_timers[doc]--;
+            new_topic = doc_drawers[doc]->draw();
+            
+            double Pie_accept = doc_proposal[doc][new_topic] / doc_proposal[doc][old_topic] *
+                word_proposal[word][new_topic] / word_proposal[word][old_topic] *
+                stale_doc_proposal[doc][old_topic] / stale_doc_proposal[doc][new_topic];
+            double roll = 1.0 * rand() / RAND_MAX;
+            if (roll > Pie_accept)      // 拒绝
+                new_topic = old_topic;
+            
+            //cout << "out doc" << endl;
         }
 
-        word_drawer_timers[word]--;
-        new_topic = word_drawers[word]->draw();
+        // 更新各个实时计数的值
+        word_proposal_sum[word] -= word_proposal[word][new_topic];
+        word_proposal[word][new_topic] = (corpus->topic_by_word_cnt[new_topic][word] + corpus->beta[word])
+                    / (corpus->topic_token_sum[new_topic] + corpus->beta_sum);
+        word_proposal_sum[word] += word_proposal[word][new_topic];
 
-        double Pie_accept = doc_proposal[doc][new_topic] / doc_proposal[doc][old_topic] *
-            word_proposal[word][new_topic] / word_proposal[word][old_topic] *
-            stale_word_proposal[word][old_topic] / stale_word_proposal[word][new_topic];
-        double roll = 1.0 * rand() / RAND_MAX;
-        if (roll > Pie_accept)      // 拒绝
-            new_topic = old_topic;
-        //cout << "out word" << endl;
+        doc_proposal_sum[doc] -= doc_proposal[doc][new_topic];
+        doc_proposal[doc][new_topic] = (corpus->doc_by_topic_cnt[doc][new_topic] + corpus->alpha[new_topic]);
+        doc_proposal_sum[doc] += doc_proposal[doc][new_topic];
+
+        old_topic = new_topic;
     }
-    else
-    {
-        // 抽doc分布
-        //cout << "in doc" << endl;
-        if (doc_drawer_timers[doc] == 0)
-        {
-            stale_doc_proposal_sum[doc] = doc_proposal_sum[doc];
-            for (int k = 0; k < corpus->K; k++)
-            {
-                stale_doc_proposal[doc][k] = doc_proposal[doc][k];
-                proba[k] = stale_doc_proposal[doc][k] / stale_doc_proposal_sum[doc];   
-            }
-            doc_drawers[doc]->createTable(proba);
-            doc_drawer_timers[doc] = corpus->K;
-        }
-
-        doc_drawer_timers[doc]--;
-        new_topic = doc_drawers[doc]->draw();
-
-        double Pie_accept = doc_proposal[doc][new_topic] / doc_proposal[doc][old_topic] *
-            word_proposal[word][new_topic] / word_proposal[word][old_topic] *
-            stale_doc_proposal[doc][old_topic] / stale_doc_proposal[doc][new_topic];
-        double roll = 1.0 * rand() / RAND_MAX;
-        if (roll > Pie_accept)      // 拒绝
-            new_topic = old_topic;
-        //cout << "out doc" << endl;
-    }
-
-    // 更新各个实时计数的值
-    word_proposal_sum[word] -= word_proposal[word][new_topic];
-    word_proposal[word][new_topic] = (corpus->topic_by_word_cnt[new_topic][word] + corpus->beta[word])
-                / (corpus->topic_token_sum[new_topic] + corpus->beta_sum);
-    word_proposal_sum[word] += word_proposal[word][new_topic];
-
-    doc_proposal_sum[doc] -= doc_proposal[doc][new_topic];
-    doc_proposal[doc][new_topic] = (corpus->doc_by_topic_cnt[doc][new_topic] + corpus->alpha[new_topic]);
-    doc_proposal_sum[doc] += doc_proposal[doc][new_topic];
-    
+    //cout << (origin == new_topic) << endl;
     return new_topic;
 }
 

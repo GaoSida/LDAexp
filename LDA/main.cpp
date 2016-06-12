@@ -12,10 +12,10 @@
 
 using namespace std;
 
-#define NUMBER_OF_TOPIC 1000
+#define NUMBER_OF_TOPIC 4
 #define MIN_ACCEPT_LENGTH 2
 #define MAX_ITERATION 1000
-#define INFO_INTERVAL 10
+#define INFO_INTERVAL 100
 #define DATA_DIR "../stemmed_text/"
 
 /*
@@ -24,7 +24,7 @@ using namespace std;
         > FastLDA：13~15s左右（进过几十轮迭代后下降下来）
         > SparseLDA：3~4s左右
         > AliasLDA：3~4s左右 (2000 Topic 下，Sparse在5~6秒，Alias在4~5秒)
-        > LightLDA：0~1s。但是似乎并不收敛。
+        > LightLDA：0~1s。但是收敛极其缓慢。
 */
 
 /* 已知bug
@@ -42,6 +42,8 @@ int main()
 
     Corpus* corpus = new Corpus(NUMBER_OF_TOPIC);
     corpus->defaultRead(DATA_DIR, MIN_ACCEPT_LENGTH);
+
+    cout << "summary: V=" << corpus->V << " N_sum=" << corpus->N_sum << endl;
     
     //GibbsSampler* sampler = new OriginalSampler(corpus);
     //GibbsSampler* sampler = new FastSampler(corpus);
@@ -51,7 +53,7 @@ int main()
     Evaluator* evaluator = new Evaluator(corpus);
     ConvergenceJudge* judge = new JudgeByIteration(corpus, evaluator, MAX_ITERATION);
     LDAFrame* lda = new LDAFrame(corpus, sampler, evaluator, judge);
-    lda->solve(TIME_INTERVAL, INFO_INTERVAL);
+    lda->solve(TIME_INTERVAL | PERPLEXITY, INFO_INTERVAL);
 
     evaluator->printInfo(TOPIC_SUMMARY, MAX_ITERATION);
 
