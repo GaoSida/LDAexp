@@ -134,3 +134,38 @@ time interval = 4;
 iteration 150:
 time interval = 3;
 
+
+【LightLDA】
+iteration 10:
+time interval = 2; 
+iteration 20:
+time interval = 1; 
+iteration 30:
+time interval = 1; 
+iteration 40:
+time interval = 0; 
+iteration 50:
+time interval = 1; 
+iteration 60:
+time interval = 1; 
+iteration 70:
+time interval = 1; 
+iteration 80:
+time interval = 0; 
+iteration 90:
+time interval = 1; 
+iteration 100:
+time interval = 1; 
+iteration 110:
+time interval = 0; 
+iteration 120:
+time interval = 1; 
+iteration 130:
+time interval = 1; 
+iteration 140:
+time interval = 1; 
+iteration 150:
+time interval = 0; 
+iteration 160:
+time interval = 1; 
+

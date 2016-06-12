@@ -172,8 +172,8 @@ int AliasSampler::sample(int doc, int token, int iteration)
     sorted_document_topic_cnt[doc]->increaseOriginal(new_topic);
     dense_sum_w[word] -= dense_wt[word][new_topic];
     dense_wt[word][new_topic] = corpus->alpha[new_topic] * 
-        (corpus->topic_by_word_cnt[new_topic][word] + 1 + corpus->beta[word])
-        / (corpus->topic_token_sum[new_topic] + 1 + corpus->beta_sum);
+        (corpus->topic_by_word_cnt[new_topic][word] + corpus->beta[word])
+        / (corpus->topic_token_sum[new_topic] + corpus->beta_sum);
     dense_sum_w[word] += dense_wt[word][new_topic];
     //cout << "all done" << endl;
     return new_topic;

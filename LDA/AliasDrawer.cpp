@@ -38,6 +38,7 @@ void AliasDrawer::createTable(double* p)
         underfull.pop();
         int over = overfull.front();
         overfull.pop();
+        
         alias[under] = over;
         proba[over] -= (1 - proba[under]);
 
