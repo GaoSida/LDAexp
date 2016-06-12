@@ -1,7 +1,7 @@
 #ifndef __LDAEXP_ALIAS_DRAWER__
 #define __LDAEXP_ALIAS_DRAWER__
 
-#define ESP 1e-6
+#define ESP 1e-8
 #include <cstdlib>
 
 class AliasDrawer

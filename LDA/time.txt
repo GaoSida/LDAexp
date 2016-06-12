@@ -100,3 +100,37 @@ iteration 200:
 time interval = 4; 
 iteration 210:
 time interval = 3;
+
+
+【AliasLDA】
+iteration 10:
+time interval = 10; 
+iteration 20:
+time interval = 6; 
+iteration 30:
+time interval = 4; 
+iteration 40:
+time interval = 4; 
+iteration 50:
+time interval = 5; 
+iteration 60:
+time interval = 3; 
+iteration 70:
+time interval = 4; 
+iteration 80:
+time interval = 3; 
+iteration 90:
+time interval = 3; 
+iteration 100:
+time interval = 4; 
+iteration 110:
+time interval = 3; 
+iteration 120:
+time interval = 3; 
+iteration 130:
+time interval = 3; 
+iteration 140:
+time interval = 4; 
+iteration 150:
+time interval = 3;
+

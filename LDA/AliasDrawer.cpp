@@ -1,5 +1,6 @@
 #include "AliasDrawer.h"
 #include <queue>
+#include <iostream>
 using namespace std;
 
 AliasDrawer::AliasDrawer(int n)
@@ -30,7 +31,6 @@ void AliasDrawer::createTable(double* p)
         else
             alias[i] = i;
     }
-
     // 构造 alias 表
     while (!underfull.empty())
     {
@@ -38,11 +38,10 @@ void AliasDrawer::createTable(double* p)
         underfull.pop();
         int over = overfull.front();
         overfull.pop();
-
         alias[under] = over;
         proba[over] -= (1 - proba[under]);
 
-        if (proba[over] < 1 - ESP)
+        if (proba[over] < 1 - ESP && proba[over] > 0)
             underfull.push(over);
         else if (proba[over] > 1 + ESP)
             overfull.push(over);
